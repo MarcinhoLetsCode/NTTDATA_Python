@@ -40,3 +40,4 @@ print(data - timedelta(days=1))
 
 resultado = datetime(2024, 8, 22, 17, 00, 00) - timedelta(hours=1)
 print(resultado.time())
+print(resultado.date())
