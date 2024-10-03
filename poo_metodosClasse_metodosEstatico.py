@@ -1,33 +1,34 @@
-class Estudante:
-    escola = "DIO"
-
-    def __init__(self, nome, matricula):
+class Pessoa:
+    def __init__(self, nome=None, idade=None):
         self.nome = nome
-        self.matricula = matricula
+        self.idade = idade
 
-    def __str__(self):
-        return f"{self.nome} ({self.matricula}) - {self.escola}"
+    #def criar_de_partir_data_nascimento(self, ano, mes, dia, nome):
+    @classmethod
+    def criar_de_partir_data_nascimento(cls, ano, mes, dia, nome):
+        print(cls)
+        mes_atual = 10
+        ano_atual = 2024
+        if (mes_atual < mes):
+            idade = ano_atual - ano - 1
+        else:
+            idade = 2024 - ano
+        #return Pessoa(nome, idade)
+        return cls(nome, idade)
 
-def mostrar_valores(*objs):
-    for obj in objs:
-        print(obj)
+    @staticmethod
+    def e_maior_de_idade(idade):
+        return idade >= 18
 
-aluno_1 = Estudante("Marcinho", 1)
-aluno_2 = Estudante("Darlan", 2)
+p = Pessoa("Marcinho", 31)
+print(p.nome, p.idade)
 
-#print(aluno_1)
-#print(aluno_2)
-mostrar_valores(aluno_1, aluno_2)
+#p2 = Pessoa().criar_de_partir_data_nascimento(1992, 12, 23, "Marcinho")
+p2 = Pessoa.criar_de_partir_data_nascimento(1992, 12, 23, "Marcinho")
+print(p2.nome, p2.idade)
 
-aluno_1.matricula = 3
+p3 = Pessoa.criar_de_partir_data_nascimento(1992, 12, 23, "Darlan")
+print(p3.e_maior_de_idade(p3.idade))
 
-print("")
-#print(aluno_1)
-mostrar_valores(aluno_1, aluno_2)
-
-print("")
-Estudante.escola = "Python"
-aluno_3 = Estudante("Joazinho", 4)
-aluno_3.escola = "DIO"
-
-mostrar_valores(aluno_1, aluno_2, aluno_3)
+print(Pessoa.e_maior_de_idade(10))
+print(Pessoa.e_maior_de_idade(20))
